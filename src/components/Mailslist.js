@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import TablePaginationActions from './TablePaginationActions';
+import {Link} from 'react-router-dom';
+
 let counter = 0;
 function createData(name, calories, fat) {
   counter += 1;
@@ -34,7 +36,7 @@ class Mailslist extends Component {
 
     this.state = {
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 20,
     };
   }
 
@@ -53,40 +55,42 @@ class Mailslist extends Component {
     const mails = require('../json/data.json');
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, mails.length - page * rowsPerPage);
     return (
-      <Paper className={classes.root}>
-        <div className={classes.tableWrapper}>
-          <Table className={classes.table}>
-            <TableBody>
-              {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
-                return (
-                  <TableRow key={n.id}>
-                    <TableCell component="th" scope="row">
-                      {n.firstName}
-                    </TableCell>
-                    <TableCell numeric>{n.subject}</TableCell>
+        <Paper className={classes.root}>
+          <div className={classes.tableWrapper}>
+            <Table className={classes.table}>
+              <TableBody>
+                {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
+                  return (
+                    <TableRow  key={n.id} >
+                      <TableCell component="th" scope="row" >
+                        <Link to="/mails">{n.firstName}</Link>
+                      </TableCell>
+                      <TableCell >
+                        <Link to="/mails">{n.subject}</Link>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 48 * emptyRows }}>
+                    <TableCell colSpan={6} />
                   </TableRow>
-                );
-              })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 48 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-            <TableFooter>
-            <TablePagination
-                  colSpan={3}
-                  count={mails.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onChangePage={this.handleChangePage}
-                  onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                  ActionsComponent={TablePaginationActions}
-                /> 
-            </TableFooter>
-          </Table>
-        </div>
-      </Paper>
+                )}
+              </TableBody>
+              <TableFooter>
+              <TablePagination
+                    colSpan={3}
+                    count={mails.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={this.handleChangePage}
+                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions}
+                  /> 
+              </TableFooter>
+            </Table>
+          </div>
+        </Paper>
     );
   }
 }

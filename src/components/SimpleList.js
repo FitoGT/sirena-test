@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -23,24 +24,30 @@ function SimpleList(props) {
   return (
     <div className={classes.root}>
       <List component="nav">
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </ListItem>
-        <ListItem button>
-	       <ListItemIcon>
-	         <SendIcon />
-	       </ListItemIcon>
-	       <ListItemText inset primary="Sent mail" />
-	    </ListItem>
+        <Link to="/inbox">
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Inbox" />
+          </ListItem>
+        </Link>
+        <Link to="/draft">
+          <ListItem button>
+            <ListItemIcon>
+              <DraftsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Drafts" />
+          </ListItem>
+        </Link>
+        <Link to="/sent">
+          <ListItem button>
+    	       <ListItemIcon>
+    	         <SendIcon />
+    	       </ListItemIcon>
+    	       <ListItemText inset primary="Sent mail" />
+    	    </ListItem>
+        </Link>
       </List>
     </div>
   );
