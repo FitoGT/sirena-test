@@ -4,13 +4,11 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import store from '../store';
+import {Link} from 'react-router-dom';
 class Login extends Component {
 constructor(props){
   super(props);
-  this.state={
-  username:'',
-  password:''
-  }
+  
  }
 render() {
     return (
@@ -21,16 +19,16 @@ render() {
              title="Login"
            />
            <TextField
-             hintText="Enter your Username"
-             floatingLabelText="Username"
-             onChange = {(event,newValue) => this.setState({username:newValue})}
+             id="username"
+             hintText="Enter your Email"
+             floatingLabelText="Email"
              />
            <br/>
              <TextField
+               id="password"
                type="password"
                hintText="Enter your Password"
                floatingLabelText="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
              <RaisedButton label="Submit" primary={true} style={style} onClick={() => this.logIn()}/>
@@ -40,11 +38,17 @@ render() {
     );
   }
   logIn = props=>{
-    store.dispatch({
-       type:"LOG_IN",
-       sent:[],
-       logged:true
-     })
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    if(username == 'test@getsirena.com' && password == 'test'){
+      store.dispatch({
+         type:"LOG_IN",
+         sent:[],
+         logged:true
+       });
+    }else{
+      alert('Email not valid')
+    }
   } 
 }
 const style = {
