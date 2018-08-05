@@ -74,6 +74,9 @@ class App extends Component {
              <SimpleList cont={this.state.sent.length}/>
             </Grid>
             <Grid item sm > 
+            <Route exact path ="/" render={
+               props => <Mailslist {...props} mails={mails}/>
+               }  />
              <Route  path ="/mails" render={
                props => <Mailslist {...props} mails={mails}/>
                }  />
