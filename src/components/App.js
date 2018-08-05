@@ -9,7 +9,7 @@ import Compose from './Compose';
 import SentMailList from './SentMailList';
 import store from '../store';
 const divStyle = {
-  flexGrow: '0',
+  flexGrow: '0.2',
 };
 class App extends Component {
 	constructor(props) {
@@ -31,10 +31,10 @@ class App extends Component {
     <BrowserRouter>
       <Fragment>
       	<div>
-	      <Navbar/>
+	      <Navbar />
 	      <Grid container>
 	      	<Grid item lg style={divStyle}>
-		     <SimpleList/>
+		     <SimpleList cont={this.state.sent.length}/>
 		    </Grid>
 		    <Grid item sm > 
 		     <Route  path ="/mails" render={

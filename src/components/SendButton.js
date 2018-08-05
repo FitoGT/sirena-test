@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import store from '../store';
+import {BrowserRouter} from 'react-router-dom';
 const styles = theme => ({
 
   button: {
@@ -43,6 +44,8 @@ class SendButton extends Component {
       type:"SEND_MAIL",
       sentMail
     })
+    var link = document.getElementById('sent');
+    link.click();
 
   }  
 }

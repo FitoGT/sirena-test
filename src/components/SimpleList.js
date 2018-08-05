@@ -20,6 +20,7 @@ const styles = theme => ({
 
 function SimpleList(props) {
   const { classes } = props;
+  console.log(props);
   return (
     <div className={classes.root}>
       <List component="nav">
@@ -39,12 +40,12 @@ function SimpleList(props) {
             <ListItemText primary="Drafts" />
           </ListItem>
         </Link>
-        <Link to="/sent">
+        <Link id="sent" to="/sent">
           <ListItem button>
     	       <ListItemIcon>
     	         <SendIcon />
     	       </ListItemIcon>
-    	       <ListItemText inset primary="Sent mail" />
+    	       <ListItemText inset primary={"Sent Mail ("+props.cont+")"} />
     	    </ListItem>
         </Link>
       </List>
