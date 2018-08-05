@@ -8,16 +8,9 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
 import TablePaginationActions from './TablePaginationActions';
-import {Link} from 'react-router-dom';
-
-let counter = 0;
-function createData(name, calories, fat) {
-  counter += 1;
-  return { id: counter, name, calories, fat };
-}
-
+import Mails from './Mails';
+import {Link,Route} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -36,7 +29,7 @@ class Mailslist extends Component {
 
     this.state = {
       page: 0,
-      rowsPerPage: 20,
+      rowsPerPage: 5,
     };
   }
 
@@ -50,50 +43,57 @@ class Mailslist extends Component {
   };
 
   render() {
+    
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
-    const mails = require('../json/data.json');
+    const mails = this.props.mails;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, mails.length - page * rowsPerPage);
+    
     return (
-        <Paper className={classes.root}>
-          <div className={classes.tableWrapper}>
-            <Table className={classes.table}>
-              <TableBody>
-                {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
-                  return (
-                    <TableRow  key={n.id} >
-                      <TableCell component="th" scope="row" >
-                        <Link to="/mails">{n.firstName}</Link>
-                      </TableCell>
-                      <TableCell >
-                        <Link to="/mails">{n.subject}</Link>
-                      </TableCell>
+        <Fragment>
+          <Paper className={classes.root}>
+            <div className={classes.tableWrapper}>
+              <Table className={classes.table}>
+                <TableBody>
+                  {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(mail => {
+                    return (
+                      <TableRow  key={mail.id} >
+                        <TableCell component="th" scope="row" >
+                          <Link to={`${this.props.match.url}/${mail.id}`}>{mail.firstName}</Link>
+                        </TableCell>
+                        <TableCell >
+                          <Link to={`${this.props.match.url}/${mail.id}`}>{mail.subject}</Link>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 48 * emptyRows }}>
+                      <TableCell colSpan={6} />
                     </TableRow>
-                  );
-                })}
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={6} />
-                  </TableRow>
-                )}
-              </TableBody>
-              <TableFooter>
-              <TablePagination
-                    colSpan={3}
-                    count={mails.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    ActionsComponent={TablePaginationActions}
-                  /> 
-              </TableFooter>
-            </Table>
-          </div>
-        </Paper>
+                  )}
+                </TableBody>
+                <TableFooter>
+                <TablePagination
+                      colSpan={3}
+                      count={mails.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      onChangePage={this.handleChangePage}
+                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActions}
+                    /> 
+                </TableFooter>
+              </Table>
+            </div>
+          </Paper>
+          <Route  path={`${this.props.match.url}/:mailsId`} render={
+            ({match}) => <Mails {...mails.find(mail => mail.id == match.params.mailsId)}/>
+          }/>
+        </Fragment>
     );
   }
-}
+} 
 
 
 Mailslist.propTypes = {

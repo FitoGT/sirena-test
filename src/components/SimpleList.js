@@ -24,7 +24,7 @@ function SimpleList(props) {
   return (
     <div className={classes.root}>
       <List component="nav">
-        <Link to="/inbox">
+        <Link to="/mails">
           <ListItem button>
             <ListItemIcon>
               <InboxIcon />

@@ -10,6 +10,7 @@ const divStyle = {
 };
 class App extends Component {
   render() {
+	const mails = require('../json/data.json');
     return (
     	
     <BrowserRouter>
@@ -21,8 +22,9 @@ class App extends Component {
 		     <SimpleList/>
 		    </Grid>
 		    <Grid item sm > 
-		     <Route path ="/inbox" component={Mailslist} />
-        	 <Route exact path ="/mails" component={Mails} />
+		     <Route  path ="/mails" render={
+		     	props => <Mailslist {...props} mails={mails}/>
+		     	}  />
 		    </Grid>
 	      </Grid>
       	</div>
