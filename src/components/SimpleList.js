@@ -32,7 +32,7 @@ function SimpleList(props) {
             <ListItemText primary="Inbox" />
           </ListItem>
         </Link>
-        <Link to="/draft">
+        <Link to="/compose">
           <ListItem button>
             <ListItemIcon>
               <DraftsIcon />

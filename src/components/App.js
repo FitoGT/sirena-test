@@ -5,6 +5,8 @@ import SimpleList from "./SimpleList.js";
 import Mailslist from "./Mailslist.js";
 import {BrowserRouter,Link,Route} from 'react-router-dom';
 import Mails from './Mails';
+import ComposeButton from './ComposeButton';
+import Compose from './Compose';
 const divStyle = {
   flexGrow: '0',
 };
@@ -25,8 +27,10 @@ class App extends Component {
 		     <Route  path ="/mails" render={
 		     	props => <Mailslist {...props} mails={mails}/>
 		     	}  />
+		     	<Route path="/compose" component={Compose} />
 		    </Grid>
 	      </Grid>
+	      <ComposeButton/>
       	</div>
       </Fragment>
     </BrowserRouter>
