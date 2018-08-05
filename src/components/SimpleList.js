@@ -54,7 +54,6 @@ const styles = theme => ({
 
 function SimpleList(props) {
   const { classes } = props;
-  console.log(props);
   return (
     <div className={classes.root}>
       <List component="nav">

@@ -7,6 +7,12 @@ const reducer = (state,action)=>{
 			sent: state.sent.concat(action.sentMail)
 		}	
 	}
+	if(action.type==="LOG_IN"){
+		return {
+			...state,
+			logged: true
+		}	
+	}
 	return state;
 }
 
