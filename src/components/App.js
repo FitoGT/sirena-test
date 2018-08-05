@@ -8,6 +8,40 @@ import ComposeButton from './ComposeButton';
 import Compose from './Compose';
 import SentMailList from './SentMailList';
 import store from '../store';
+/**
+ * @api {get} /App.js App Component
+ * @apiName App
+ * @apiGroup Components
+ *
+ * 
+ *
+ * @apiSuccess {mails} json ../json/data.json.
+ *
+ * @apiSuccessExample Success-Response:
+ *     <BrowserRouter>
+ *     <Fragment>
+ *       <div>
+ *       <Navbar />
+ *       <Grid container>
+ *         <Grid item lg style={divStyle}>
+ *        <SimpleList cont={this.state.sent.length}/>
+ *       </Grid>
+ *       <Grid item sm > 
+ *        <Route  path ="/mails" render={
+ *         props => <Mailslist {...props} mails={mails}/>
+ *         }  />
+ *        <Route path="/compose" component={Compose} />
+ *        <Route  path ="/sent" render={
+ *         props => <SentMailList {...props} sent={this.state.sent}/>
+ *         }  />
+ *       </Grid>
+ *       </Grid>
+ *       <ComposeButton/>
+ *       </div>
+ *     </Fragment>
+ *   </BrowserRouter>
+ *
+ */
 const divStyle = {
   flexGrow: '0.2',
 };

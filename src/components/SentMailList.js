@@ -7,6 +7,41 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+/**
+ * @api {get} /SendMailList.js SendMailList Component
+ * @apiName SendMailList
+ * @apiGroup Components
+ * @apiSuccessExample Success-Response:
+ *   <div className="MuiPaper-root-9 MuiPaper-elevation2-13 MuiPaper-rounded-10 Mailslist-root-417">
+ *       <Table >
+ *           <TableBody>
+ *             <TableRow  key={i} >
+ *               <TableCell component="th" scope="row" >
+ *                 {object.to}
+ *               </TableCell>
+ *               <TableCell >
+ *                 {object.subject}
+ *               </TableCell>
+ *             </TableRow>
+ *           </TableBody>
+ *       </Table>
+ *     </div>
+ *
+ * @apiError If no emails were sent.
+ *
+ * @apiErrorExample Error-Response:
+ *     <div>
+ *       <Card >
+ *         <CardContent>
+ *           <Typography variant="headline" component="h2">
+ *             No emails sent
+ *           </Typography>
+ *         </CardContent>
+ *         <CardActions>
+ *         </CardActions>
+ *      </Card>
+ *     </div>
+ */
 const styles = theme => ({
   root: {
     width: '100%',

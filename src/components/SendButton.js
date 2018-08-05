@@ -5,6 +5,19 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import store from '../store';
 import {BrowserRouter} from 'react-router-dom';
+/**
+ * @api {get} /SendButton.js SendButton Component
+ * @apiName SendButton
+ * @apiGroup Components
+ * @apiSuccessExample Success-Response:
+ *     <div>
+ *        <Button onClick={()=>this.sendMail()} variant="contained" color="primary" className={classes.button}>
+ *         Send
+ *         <Icon className={classes.rightIcon}></Icon>
+ *       </Button>
+ *     </div>
+ *
+ */
 const styles = theme => ({
 
   button: {

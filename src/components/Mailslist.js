@@ -11,7 +11,55 @@ import Paper from '@material-ui/core/Paper';
 import TablePaginationActions from './TablePaginationActions';
 import Mails from './Mails';
 import {Link,Route} from 'react-router-dom';
-import SelectField from './SelectField';
+
+/**
+ * @api {get} /Mailslist.js Mailslist Component
+ * @apiName Mailslist
+ * @apiGroup Components
+ * @apiSuccessExample Success-Response:
+ * <Fragment>
+ *         <Paper className={classes.root}>
+ *           <div className={classes.tableWrapper}>
+ *             <Table className={classes.table}>
+ *               <TableBody>
+ *                 {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(mail => {
+ *                   return (
+ *                     <TableRow  key={mail.id} >
+ *                       <TableCell component="th" scope="row" >
+ *                         <Link to={`${this.props.match.url}/${mail.id}`}>{mail.firstName}</Link>
+ *                       </TableCell>
+ *                       <TableCell >
+ *                         <Link to={`${this.props.match.url}/${mail.id}`}>{mail.subject}</Link>
+ *                       </TableCell>
+ *                     </TableRow>
+ *                   );
+ *                 })}
+ *                 {emptyRows > 0 && (
+ *                   <TableRow style={{ height: 48 * emptyRows }}>
+ *                     <TableCell colSpan={6} />
+ *                   </TableRow>
+ *                 )}
+ *               </TableBody>
+ *               <TableFooter>
+ *               <TablePagination
+ *                     colSpan={3}
+ *                     count={mails.length}
+ *                     rowsPerPage={rowsPerPage}
+ *                     page={page}
+ *                     onChangePage={this.handleChangePage}
+ *                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
+ *                     ActionsComponent={TablePaginationActions}
+ *                   /> 
+ *               </TableFooter>
+ *             </Table>
+ *           </div>
+ *        </Paper>
+ *         <Route  path={`${this.props.match.url}/:mailsId`} render={
+ *           ({match}) => <Mails {...mails.find(mail => mail.id == match.params.mailsId)}/>
+ *         }/>
+ *       </Fragment>
+ *
+ */
 const styles = theme => ({
   root: {
     width: '100%',
@@ -53,7 +101,6 @@ class Mailslist extends Component {
         <Fragment>
           <Paper className={classes.root}>
             <div className={classes.tableWrapper}>
-            <SelectField />
               <Table className={classes.table}>
                 <TableBody>
                   {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(mail => {

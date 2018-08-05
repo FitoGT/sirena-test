@@ -4,7 +4,22 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import {Link} from 'react-router-dom';
-
+/**
+ * @api {get} /ComposeButton.js ComposeButton Component
+ * @apiName ComposeButton
+ * @apiGroup Components
+ *
+ * 
+ * @apiSuccessExample Success-Response:
+ *  <div>
+ *     <Link to="/compose">
+ *       <Button variant="fab" color="primary" aria-label="Add" className={classes.button}>
+ *         <AddIcon />
+ *       </Button>
+ *     </Link>
+ *   </div>
+ *
+ */
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,

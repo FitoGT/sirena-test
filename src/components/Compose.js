@@ -8,6 +8,38 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import SendButton from './SendButton';
+/**
+ * @api {get} /Compose.js Compose Component
+ * @apiName Compose
+ * @apiGroup Components
+ *
+ * 
+ * @apiSuccessExample Success-Response:
+ *    <div className={classes.root}>
+ *     <TextField
+ *         id="to"
+ *         className={classNames(classes.margin, classes.textField)}
+ *         InputProps={{
+ *           startAdornment: <InputAdornment position="start">To</InputAdornment>,
+ *         }}
+ *       />
+ *       <TextField
+ *         id="subject"
+ *         className={classNames(classes.margin, classes.textField)}
+ *         InputProps={{
+ *           startAdornment: <InputAdornment position="start">Subject</InputAdornment>,
+ *         }}
+ *       />
+ *       <FormControl fullWidth className={classes.margin}>
+ *         <InputLabel htmlFor="adornment-amount">Message</InputLabel>
+ *         <Input
+ *           id="message"
+ *         />
+ *       <SendButton/>
+ *       </FormControl>
+ *     </div>
+ *
+ */
 
 const styles = theme => ({
   root: {
