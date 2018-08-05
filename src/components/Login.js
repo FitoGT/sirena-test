@@ -5,6 +5,36 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import store from '../store';
 import {Link} from 'react-router-dom';
+/**
+ * @api {get} /Login.js Login Component
+ * @apiName Login
+ * @apiGroup Components
+ * @apiSuccessExample Success-Response:
+ *    <div>
+ *       <MuiThemeProvider>
+ *         <div>
+ *         <AppBar
+ *            title="Login"
+ *          />
+ *          <TextField
+ *            id="username"
+ *            hintText="Enter your Email"
+ *            floatingLabelText="Email"
+ *            />
+ *          <br/>
+ *            <TextField
+ *              id="password"
+ *              type="password"
+ *              hintText="Enter your Password"
+ *              floatingLabelText="Password"
+ *              />
+ *            <br/>
+ *            <RaisedButton label="Submit" primary={true} style={style} onClick={() => this.logIn()}/>
+ *        </div>
+ *        </MuiThemeProvider>
+ *     </div>
+ *
+ */
 class Login extends Component {
 constructor(props){
   super(props);
