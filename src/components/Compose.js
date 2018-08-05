@@ -8,6 +8,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import SendButton from './SendButton';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 /**
  * @api {get} /Compose.js Compose Component
  * @apiName Compose
@@ -61,15 +63,11 @@ const styles = theme => ({
 
 class Compose extends React.Component {
   state = {
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
+    age: ''
   };
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
+ handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleMouseDownPassword = event => {
@@ -82,37 +80,53 @@ class Compose extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    const mails = require('../json/data.json');
     return (
       <div className={classes.root}>
-      <TextField
-          id="to"
-          className={classNames(classes.margin, classes.textField)}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">To</InputAdornment>,
-          }}
-        />
-        <TextField
-          id="subject"
-          className={classNames(classes.margin, classes.textField)}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">Subject</InputAdornment>,
-          }}
-        />
-        <FormControl fullWidth className={classes.margin}>
-          <InputLabel htmlFor="adornment-amount">Message</InputLabel>
-          <Input
-            id="message"
-          />
-        <SendButton/>
+      <form className={classes.root} autoComplete="off">
+          <FormControl className={classes.formControl}>
+              <InputLabel shrink htmlFor="age-label-placeholder">
+                To
+              </InputLabel>
+              <Select
+                value={this.state.age}
+                onChange={this.handleChange}
+                input={<Input name="age" id="to" />}
+                displayEmpty
+                name="age"
+                className={classes.selectEmpty}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {mails.map(mail => {
+                    return (
+                      <MenuItem id={mail.id} value={mail.email}>{mail.email}</MenuItem>
+                    );
+                  })}
+              </Select>
+            </FormControl>
+            <br/>  
+            <TextField
+              id="subject"
+              className={classNames(classes.margin, classes.textField)}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">Subject</InputAdornment>,
+              }}
+            />
+            <FormControl fullWidth className={classes.margin}>
+              <InputLabel htmlFor="adornment-amount">Message</InputLabel>
+              <Input
+                id="message"
+              />
+            <SendButton/>
         </FormControl>
+        </form>
       </div>
     );
   }
 }
 
-Compose.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+
 
 export default withStyles(styles)(Compose);
