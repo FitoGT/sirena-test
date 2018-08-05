@@ -62,7 +62,7 @@ function SimpleList(props) {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText inset primary={"Inbox ("+props.contInbox+")"} />
           </ListItem>
         </Link>
         <Link to="/compose">

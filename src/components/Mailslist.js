@@ -107,10 +107,10 @@ class Mailslist extends Component {
                     return (
                       <TableRow  key={mail.id} >
                         <TableCell component="th" scope="row" >
-                          <Link to={`${this.props.match.url}/${mail.id}`}>{mail.firstName}</Link>
+                          <Link to={`/mails/${mail.id}`}>{mail.firstName}</Link>
                         </TableCell>
                         <TableCell >
-                          <Link to={`${this.props.match.url}/${mail.id}`}>{mail.subject}</Link>
+                          <Link to={`/mails/${mail.id}`}>{mail.subject}</Link>
                         </TableCell>
                       </TableRow>
                     );
@@ -135,7 +135,7 @@ class Mailslist extends Component {
               </Table>
             </div>
           </Paper>
-          <Route  path={`${this.props.match.url}/:mailsId`} render={
+          <Route  path={`/mails/:mailsId`} render={
             ({match}) => <Mails {...mails.find(mail => mail.id == match.params.mailsId)}/>
           }/>
         </Fragment>

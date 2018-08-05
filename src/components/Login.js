@@ -35,6 +35,10 @@ import {Link} from 'react-router-dom';
  *     </div>
  *
  */
+const loginContainer = {
+  margin: '0 auto',
+  width: '500px'
+};
 class Login extends Component {
 constructor(props){
   super(props);
@@ -44,25 +48,26 @@ render() {
     return (
       <div>
         <MuiThemeProvider>
-          <div>
           <AppBar
              title="Login"
            />
-           <TextField
-             id="username"
-             hintText="Enter your Email"
-             floatingLabelText="Email"
-             />
-           <br/>
-             <TextField
-               id="password"
-               type="password"
-               hintText="Enter your Password"
-               floatingLabelText="Password"
+           <div style={loginContainer}>
+              <TextField
+               id="username"
+               hintText="Enter your Email"
+               floatingLabelText="Email"
                />
-             <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={() => this.logIn()}/>
-         </div>
+              <br/>
+               
+              <TextField
+                 id="password"
+                 type="password"
+                 hintText="Enter your Password"
+                 floatingLabelText="Password"
+                 />
+               <br/>
+               <RaisedButton label="Submit" primary={true} style={style} onClick={() => this.logIn()}/>
+            </div>
          </MuiThemeProvider>
       </div>
     );

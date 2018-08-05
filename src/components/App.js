@@ -71,7 +71,7 @@ class App extends Component {
             <Navbar />
             <Grid container>
               <Grid item lg style={divStyle}>
-             <SimpleList cont={this.state.sent.length}/>
+             <SimpleList cont={this.state.sent.length} contInbox={mails.length}/>
             </Grid>
             <Grid item sm > 
             <Route exact path ="/" render={
