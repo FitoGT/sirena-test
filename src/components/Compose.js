@@ -2,16 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import SendButton from './SendButton';
 
 const styles = theme => ({
   root: {
@@ -58,14 +54,14 @@ class Compose extends React.Component {
     return (
       <div className={classes.root}>
       <TextField
-          id="simple-start-adornment"
+          id="to"
           className={classNames(classes.margin, classes.textField)}
           InputProps={{
             startAdornment: <InputAdornment position="start">To</InputAdornment>,
           }}
         />
         <TextField
-          id="simple-start-adornment"
+          id="subject"
           className={classNames(classes.margin, classes.textField)}
           InputProps={{
             startAdornment: <InputAdornment position="start">Subject</InputAdornment>,
@@ -74,11 +70,9 @@ class Compose extends React.Component {
         <FormControl fullWidth className={classes.margin}>
           <InputLabel htmlFor="adornment-amount">Message</InputLabel>
           <Input
-            id="adornment-amount"
-            value={this.state.amount}
-            onChange={this.handleChange('amount')}
-            startAdornment={<InputAdornment position="start"></InputAdornment>}
+            id="message"
           />
+        <SendButton/>
         </FormControl>
       </div>
     );
