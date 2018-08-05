@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import TablePaginationActions from './TablePaginationActions';
 import Mails from './Mails';
 import {Link,Route} from 'react-router-dom';
-
+import SelectField from './SelectField';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -53,6 +53,7 @@ class Mailslist extends Component {
         <Fragment>
           <Paper className={classes.root}>
             <div className={classes.tableWrapper}>
+            <SelectField />
               <Table className={classes.table}>
                 <TableBody>
                   {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(mail => {

@@ -23,6 +23,9 @@ const styles = {
   pos: {
     marginBottom: 12,
   },
+  mailsDiv:{
+  	marginTop:5
+  }
 };
 function Mails(props) {
   console.log(props);
@@ -30,7 +33,7 @@ function Mails(props) {
 
   return (
   	<Fragment>
-    <div>
+    <div style={{marginTop: 10}} >
       <Card >
         <CardContent>
           <Typography color="textSecondary">
