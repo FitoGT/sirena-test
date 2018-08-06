@@ -57,8 +57,12 @@ const styles = theme => ({
   textField: {
     flexBasis: 200,
   },
+  
 });
 
+const select={
+  width:155
+};
 
 
 class Compose extends React.Component {
@@ -95,6 +99,7 @@ class Compose extends React.Component {
                 displayEmpty
                 name="age"
                 className={classes.selectEmpty}
+                style={select}
               >
                 <MenuItem value="">
                   <em>None</em>
