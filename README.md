@@ -131,7 +131,7 @@ We are always open to [your feedback](https://github.com/facebookincubator/creat
 After creation, your project should look like this:
 
 ```
-my-app/
+mail/
   README.md
   node_modules/
   package.json
@@ -139,12 +139,24 @@ my-app/
     index.html
     favicon.ico
   src/
-    App.css
-    App.js
-    App.test.js
-    index.css
+    components/
+      App.js
+      Compose.js
+      ComposeButton.js
+      Login.js
+      Mails.js
+      Mailslist.js
+      Navbar.js
+      SendButton.js
+      SendMailList.js
+      SimpleList.js
+      TablePaginationActions.js
+    json/
+      data.json
     index.js
-    logo.svg
+    registerServiceWorker.js
+    store.js    
+
 ```
 
 For the project to build, **these files must exist with exact filenames**:
