@@ -88,7 +88,9 @@ class App extends Component {
                props => <Mailslist {...props} mails={mails}/>
                }  />
              <Route path="/compose" component={Compose} / >
-             <Route path="/drafts" component={Drafts} drafts={this.state.draft} />
+             <Route exact path ="/drafts" render={
+               props => <Drafts {...props} drafts={this.state.draft}/>
+               }  />
              <Route  path ="/sent" render={
                props => <SentMailList {...props} sent={this.state.sent}/>
                }  />

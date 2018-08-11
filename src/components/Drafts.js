@@ -22,13 +22,13 @@ const styles = theme => ({
 class Drafts extends Component {
  
   render() {
-  	
+  	console.log(this.props);
     const { classes } = this.props;
-    var sentMails = [];
-    if(true){
-    	/*this.props.sent.map(function(object,i){
+    var draft = [];
+    if(this.props.drafts){
+      this.props.drafts.map(function(object,i){
         //console.log(object);
-        sentMails.push(
+        draft.push(
           <TableRow  key={i} >
             <TableCell component="th" scope="row" >
               {object.to}
@@ -40,16 +40,13 @@ class Drafts extends Component {
         );
       });
       return (
-      	<div className="MuiPaper-root-9 MuiPaper-elevation2-13 MuiPaper-rounded-10 Mailslist-root-417">
-	        <Table >
-	            <TableBody>
-	            	{sentMails}
-	            </TableBody>
-	      	</Table>
-      	</div>
-      );*/
-      return (
-        <EmailBlock message ="No emails in draft"/>
+        <div className="MuiPaper-root-9 MuiPaper-elevation2-13 MuiPaper-rounded-10 Mailslist-root-417">
+          <Table >
+              <TableBody>
+                {draft}
+              </TableBody>
+          </Table>
+        </div>
       );  
     }else{
       return (
