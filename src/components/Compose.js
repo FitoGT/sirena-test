@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import SendButton from './SendButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import store from '../store';
 /**
  * @api {get} /Compose.js Compose Component
  * @apiName Compose
@@ -66,11 +67,20 @@ const select={
 
 class Compose extends React.Component {
   state = {
-    age: ''
+    age: '',
+    message:'',
+    subject:''
   };
 
  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    
+  };
+  handleChangeText = event => {
+    this.setState({ [event.id]: event.value });
+    if(event.value!==""){
+      this.sendDraft(this.state);
+    }
   };
 
   handleMouseDownPassword = event => {
@@ -80,8 +90,7 @@ class Compose extends React.Component {
   handleClickShowPassword = () => {
     this.setState(state => ({ showPassword: !state.showPassword }));
   };
-
-  render() {
+  render() {   
     const { classes } = this.props;
     const mails = require('../json/data.json');
     return (
@@ -105,7 +114,7 @@ class Compose extends React.Component {
                 </MenuItem>
                 {mails.map(mail => {
                     return (
-                      <MenuItem id={mail.id} value={mail.email}>{mail.email}</MenuItem>
+                      <MenuItem key={mail.id} id={mail.id} value={mail.email}>{mail.email}</MenuItem>
                     );
                   })}
               </Select>
@@ -117,17 +126,31 @@ class Compose extends React.Component {
               InputProps={{
                 startAdornment: <InputAdornment position="start">Subject</InputAdornment>,
               }}
+              onChange={(evt) => this.handleChangeText(evt.target)}
             />
             <FormControl fullWidth className={classes.margin}>
               <InputLabel htmlFor="adornment-amount">Message</InputLabel>
               <Input
                 id="message"
+                onChange={(evt) => this.handleChangeText(evt.target)}
               />
             <SendButton/>
         </FormControl>
         </form>
       </div>
     );
+  }
+
+  sendDraft = props=>{
+    
+    var draft = [{'to':props.age,'subject':props.subject,'message':props.message}];
+    
+    store.dispatch({
+      type:"SEND_DRAFT",
+      draft
+    })
+    
+    
   }
 }
 

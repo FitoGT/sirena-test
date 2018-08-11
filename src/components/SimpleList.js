@@ -70,7 +70,7 @@ function SimpleList(props) {
             <ListItemIcon>
               <DraftsIcon />
             </ListItemIcon>
-            <ListItemText primary="Drafts" />
+            <ListItemText primary={"Drafts ("+props.contDrafts+")"} />
           </ListItem>
         </Link>
         <Link id="sent" to="/sent">

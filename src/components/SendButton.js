@@ -56,10 +56,14 @@ class SendButton extends Component {
       type:"SEND_MAIL",
       sentMail
     })
+    store.dispatch({
+      type:"SEND_DRAFT",
+      draft:[]
+    })
     var link = document.getElementById('sent');
     link.click();
 
-  }  
+  }
 }
 
 

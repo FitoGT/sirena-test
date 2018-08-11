@@ -20,6 +20,12 @@ const reducer = (state,action)=>{
 			show: action.show
 		}	
 	}
+	if(action.type==="SEND_DRAFT"){
+		return {
+			...state,
+			draft: action.draft
+		}	
+	}
 	return state;
 }
 
