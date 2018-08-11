@@ -8,6 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import EmailBlock from './EmailBlock';
+import {Link} from 'react-router-dom';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -31,10 +32,10 @@ class Drafts extends Component {
         draft.push(
           <TableRow  key={i} >
             <TableCell component="th" scope="row" >
-              {object.to}
+            <Link to={`/compose/${object.to}/${object.subject}/${object.message}/`}>{object.to}</Link>
             </TableCell>
             <TableCell >
-              {object.subject}
+              <Link to={`/compose/${object.to}/${object.subject}/${object.message}/`}>{object.subject}</Link>
             </TableCell>
           </TableRow>
         );

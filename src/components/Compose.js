@@ -93,6 +93,13 @@ class Compose extends React.Component {
   render() {   
     const { classes } = this.props;
     const mails = require('../json/data.json');
+    if(this.props.location.pathname.length>9){
+      var arrayData = this.props.location.pathname.split('/');
+      
+      this.state.age = arrayData[2];
+      this.state.subject = arrayData[3];
+      this.state.message = arrayData[4];
+    }
     return (
       <div className={classes.root}>
       <form className={classes.root} autoComplete="off">
@@ -122,6 +129,7 @@ class Compose extends React.Component {
             <br/>  
             <TextField
               id="subject"
+              value={this.state.subject}
               className={classNames(classes.margin, classes.textField)}
               InputProps={{
                 startAdornment: <InputAdornment position="start">Subject</InputAdornment>,
@@ -132,6 +140,7 @@ class Compose extends React.Component {
               <InputLabel htmlFor="adornment-amount">Message</InputLabel>
               <Input
                 id="message"
+                value={this.state.message}
                 onChange={(evt) => this.handleChangeText(evt.target)}
               />
             <SendButton/>
