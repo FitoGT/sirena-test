@@ -79,7 +79,7 @@ render() {
       store.dispatch({
          type:"LOG_IN",
          sent:[],
-         logged:true
+         logged:true,
        });
     }else{
       alert('Email not valid')

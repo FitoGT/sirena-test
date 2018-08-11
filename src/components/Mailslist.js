@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import TablePaginationActions from './TablePaginationActions';
 import Mails from './Mails';
 import {Link,Route} from 'react-router-dom';
+import store from '../store';
 
 /**
  * @api {get} /Mailslist.js Mailslist Component
@@ -77,8 +78,14 @@ class Mailslist extends Component {
 
     this.state = {
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 20,
+      show: false
     };
+    store.subscribe(()=>{
+     this.setState({
+       show: store.getState().show
+     });  
+    })
   }
 
 
@@ -90,27 +97,37 @@ class Mailslist extends Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
+  showMails = props => {
+    store.dispatch({
+      type:"SHOW_MAILS",
+      show:true
+    })
+  };
+
+
   render() {
-    
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
     const mails = this.props.mails;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, mails.length - page * rowsPerPage);
-    
+    var display = 'block';
+    if(this.state.show==true){
+      display = 'none';
+    }
     return (
         <Fragment>
           <Paper className={classes.root}>
-            <div className={classes.tableWrapper}>
+            <div className={classes.tableWrapper}  style={{display: display}}>
               <Table className={classes.table}>
                 <TableBody>
                   {mails.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(mail => {
                     return (
                       <TableRow  key={mail.id} >
                         <TableCell component="th" scope="row" >
-                          <Link to={`/mails/${mail.id}`}>{mail.firstName}</Link>
+                          <Link to={`/mails/${mail.id}`} onClick={()=>this.showMails()}>{mail.firstName}</Link>
                         </TableCell>
                         <TableCell >
-                          <Link to={`/mails/${mail.id}`}>{mail.subject}</Link>
+                          <Link to={`/mails/${mail.id}`} onClick={()=>this.showMails()}>{mail.subject}</Link>
                         </TableCell>
                       </TableRow>
                     );
@@ -136,7 +153,7 @@ class Mailslist extends Component {
             </div>
           </Paper>
           <Route  path={`/mails/:mailsId`} render={
-            ({match}) => <Mails {...mails.find(mail => mail.id == match.params.mailsId)}/>
+            ({match}) => <Mails show={this.state.show} {...mails.find(mail => mail.id == match.params.mailsId)}/>
           }/>
         </Fragment>
     );

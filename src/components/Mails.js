@@ -3,6 +3,9 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import store from '../store';
 /**
  * @api {get} /Mails.js Mails Component
  * @apiName Mails
@@ -35,9 +38,9 @@ import Typography from '@material-ui/core/Typography';
  *
  */
 function Mails(props) {
-
-  return (
-  	<Fragment>
+  if(props.show==true){
+    return (
+    <Fragment>
     <div style={{marginTop: 10}} >
       <Card >
         <CardContent>
@@ -55,11 +58,27 @@ function Mails(props) {
           </Typography>
         </CardContent>
         <CardActions>
+          <div>
+             <Button onClick={()=>hideMails()} variant="contained" color="primary">
+              Back
+            </Button>
+          </div>
         </CardActions>
       </Card>
     </div>
     </Fragment>
   );
+  }else{
+    return null;
+  }
+  
+}
+
+function hideMails(){
+  store.dispatch({
+    type:"SHOW_MAILS",
+    show:false
+  });
 }
 
 
