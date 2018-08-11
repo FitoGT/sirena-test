@@ -9,6 +9,7 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
 import {Link} from 'react-router-dom';
+import store from '../store';
 /**
  * @api {get} /SimpleList.js SimpleList Component
  * @apiName SimpleList
@@ -62,7 +63,7 @@ function SimpleList(props) {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText inset primary={"Inbox ("+props.contInbox+")"} />
+            <ListItemText inset primary={"Inbox ("+props.contInbox+")"} onClick={()=>hideMails()} />
           </ListItem>
         </Link>
         <Link to="/drafts">
@@ -84,6 +85,13 @@ function SimpleList(props) {
       </List>
     </div>
   );
+}
+
+function hideMails() {
+  store.dispatch({
+      type:"SHOW_MAILS",
+      show:false
+    });
 }
 
 SimpleList.propTypes = {
