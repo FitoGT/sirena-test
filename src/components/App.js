@@ -9,6 +9,7 @@ import Compose from './Compose';
 import SentMailList from './SentMailList';
 import Login from './Login';
 import store from '../store';
+import Drafts from './Drafts';
 /**
  * @api {get} /App.js App Component
  * @apiName App
@@ -80,7 +81,8 @@ class App extends Component {
              <Route  path ="/mails" render={
                props => <Mailslist {...props} mails={mails}/>
                }  />
-             <Route path="/compose" component={Compose} />
+             <Route path="/compose" component={Compose} / >
+             <Route path="/drafts" component={Drafts} />
              <Route  path ="/sent" render={
                props => <SentMailList {...props} sent={this.state.sent}/>
                }  />

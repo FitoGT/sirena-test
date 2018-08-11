@@ -4,7 +4,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import store from '../store';
 /**
  * @api {get} /Mails.js Mails Component
@@ -38,7 +37,7 @@ import store from '../store';
  *
  */
 function Mails(props) {
-  if(props.show==true){
+  if(props.show===true){
     return (
     <Fragment>
     <div style={{marginTop: 10}} >

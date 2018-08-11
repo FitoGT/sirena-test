@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import store from '../store';
-import {BrowserRouter} from 'react-router-dom';
 /**
  * @api {get} /SendButton.js SendButton Component
  * @apiName SendButton

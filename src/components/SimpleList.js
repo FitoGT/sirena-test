@@ -65,7 +65,7 @@ function SimpleList(props) {
             <ListItemText inset primary={"Inbox ("+props.contInbox+")"} />
           </ListItem>
         </Link>
-        <Link to="/compose">
+        <Link to="/drafts">
           <ListItem button>
             <ListItemIcon>
               <DraftsIcon />

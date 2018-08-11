@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import store from '../store';
-import {Link} from 'react-router-dom';
 /**
  * @api {get} /Login.js Login Component
  * @apiName Login
@@ -40,42 +39,40 @@ const loginContainer = {
   width: '500px'
 };
 class Login extends Component {
-constructor(props){
-  super(props);
-  
- }
+
 render() {
     return (
-      <div>
         <MuiThemeProvider>
-          <AppBar
-             title="Login"
-           />
-           <div style={loginContainer}>
-              <TextField
-               id="username"
-               hintText="Enter your Email"
-               floatingLabelText="Email"
-               />
-              <br/>
-               
-              <TextField
-                 id="password"
-                 type="password"
-                 hintText="Enter your Password"
-                 floatingLabelText="Password"
+          <div>
+            <AppBar
+               title="Login"
+             />
+             <div style={loginContainer}>
+                <TextField
+                 id="username"
+                 hintText="Enter your Email"
+                 floatingLabelText="Email"
                  />
-               <br/>
-               <RaisedButton label="Submit" primary={true} style={style} onClick={() => this.logIn()}/>
+                <br/>
+                 
+                <TextField
+                   id="password"
+                   type="password"
+                   hintText="Enter your Password"
+                   floatingLabelText="Password"
+                   />
+                 <br/>
+                 <RaisedButton label="Submit" primary={true} style={style} onClick={() => this.logIn()}/>
+              </div>
             </div>
          </MuiThemeProvider>
-      </div>
+      
     );
   }
   logIn = props=>{
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    if(username == 'test@getsirena.com' && password == 'test'){
+    if(username === 'test@getsirena.com' && password === 'test'){
       store.dispatch({
          type:"LOG_IN",
          sent:[],
