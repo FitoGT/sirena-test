@@ -48,7 +48,8 @@ class SendButton extends Component {
   }
 
   sendMail = props=>{
-    var to = document.getElementById('to').value;
+    //no me juzguen, no quiero refactorizar jeje
+    var to = document.getElementById('to').getElementsByTagName('div')[0].getElementsByTagName('div')[0].getElementsByTagName('div')[0].getElementsByTagName('div')[0].getElementsByTagName('p')[0].innerHTML;
     var subject = document.getElementById('subject').value;
     var message = document.getElementById('message').value;
     var sentMail = [{'to':to,'subject':subject,'message':message}];
